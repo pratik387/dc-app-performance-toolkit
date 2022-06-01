@@ -10,7 +10,7 @@ from util.conf import JIRA_SETTINGS
 
 def app_specific_action(webdriver, datasets):
     page = BasePage(webdriver)
-    issue_key = NULL
+    issue_key = ""
 
     #General Deployment Request properties
     gen_req_workflow = "MyGeneralWorkflow"
