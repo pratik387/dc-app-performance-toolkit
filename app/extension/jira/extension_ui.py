@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 import time
 from tkinter.tix import Select
 
@@ -16,7 +15,7 @@ def app_specific_action(webdriver, datasets):
 
     #General Deployment Request properties
     gen_req_workflow = "MyGeneralWorkflow"
-    gen_req_dyn_property_key = "workflow/MyGeneralWorkflow-/myprop"
+    gen_req_dyn_property_key = "workflow/MyGeneralWorkflow-/MyGeneralWorkflow-/myprop"
     gen_req_dyn_property_val = "50"
 
     #Application Deployment/Provisioning Request properties
@@ -24,11 +23,11 @@ def app_specific_action(webdriver, datasets):
     app_req_workflow = "deploy"
     app_req_package = "test-job10"
     app_req_profile = "Local"
-    app_req_dyn_property_key1 = "application/DemoApp-/dyn_app_prop1"
+    app_req_dyn_property_key1 = "application/DemoApp-/DemoApp-/dyn_app_prop1"
     app_req_dyn_property_val1 = "app_property"
-    app_req_dyn_property_key2 = "components/database-/database/database-name"
+    app_req_dyn_property_key2 = "components/Backend-/database-/database/database-name"
     app_req_dyn_property_val2 = "db_name_changed"
-    app_req_dyn_property_key3 = "components/database-/database/database-server"
+    app_req_dyn_property_key3 = "components/Backend-/database-/database/database-server"
     app_req_dyn_property_val3 = "db_server_changed"
 
     # To run action as specific user uncomment code bellow.
