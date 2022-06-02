@@ -91,7 +91,7 @@ def app_specific_action(webdriver, datasets):
              page.wait_until_visible((By.ID, "rmSave")).click()
              page.wait_until_visible((By.ID, "action_id_21")).click()
              page.wait_until_visible((By.ID, "issue-workflow-transition-submit")).click()
-             verify the button Failed2StartExecution visible after execution starts
+             #verify the button Failed2StartExecution visible after execution starts
              page.wait_until_visible((By.ID, "action_id_31"))
 
         sub_measure()
