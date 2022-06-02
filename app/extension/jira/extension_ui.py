@@ -49,25 +49,25 @@ def app_specific_action(webdriver, datasets):
 
         @print_timing("selenium_app_custom_create_issue: general_deployment_request")
         def sub_measure():
-            time.sleep(5)
-            page.wait_until_clickable((By.ID, "create_link")).click()
+
+            page.wait_until_clickable((By.ID, "create_link"), timeout = 10).click()
             
-            time.sleep(5)
-            page.wait_until_clickable((By.ID , "project-field")).click()
+
+            page.wait_until_clickable((By.ID , "project-field"), timeout = 10).click()
             page.get_element((By.ID , "project-field")).send_keys(Keys.BACKSPACE)
             page.get_element((By.ID , "project-field")).send_keys("Selenium_Test_project")
             page.wait_until_visible((By.ID , "project-field")).send_keys(Keys.TAB)
             
-            time.sleep(5)
-            page.wait_until_clickable((By.ID , "issuetype-field")).click()
+
+            page.wait_until_clickable((By.ID , "issuetype-field"), timeout = 10).click()
             page.get_element((By.ID , "issuetype-field")).send_keys(Keys.BACKSPACE)
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys("General Deployment Request")
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys(Keys.TAB)
             
-            time.sleep(5)
-            page.wait_until_clickable((By.ID, "summary")).send_keys("gen_req_issue_test")
-            time.sleep(5)
-            page.wait_until_visible((By.ID, "create-issue-submit")).click()
+
+            page.wait_until_clickable((By.ID, "summary"), timeout = 10).send_keys("gen_req_issue_test")
+
+            page.wait_until_visible((By.ID, "create-issue-submit"), timeout = 10).click()
             
         sub_measure()
 
@@ -113,22 +113,21 @@ def app_specific_action(webdriver, datasets):
 
         @print_timing("selenium_app_custom_create_issue:application_deployment/provisioning_request")
         def sub_measure():
-            time.sleep(5)
-            page.wait_until_clickable((By.ID, "create_link")).click()
-            time.sleep(5)
-            page.wait_until_clickable((By.ID , "project-field")).click()
+
+            page.wait_until_clickable((By.ID, "create_link"), timeout = 10).click()
+
+            page.wait_until_clickable((By.ID , "project-field"), timeout = 10).click()
             page.get_element((By.ID , "project-field")).send_keys(Keys.BACKSPACE)
             page.wait_until_visible((By.ID , "project-field")).send_keys("Selenium_Test_project")
             page.wait_until_visible((By.ID , "project-field")).send_keys(Keys.TAB)
-            time.sleep(5)
-            page.wait_until_clickable((By.ID , "issuetype-field")).click()
+
+            page.wait_until_clickable((By.ID , "issuetype-field"), timeout = 10).click()
             page.get_element((By.ID , "issuetype-field")).send_keys(Keys.BACKSPACE)
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys("Application Deployment/Provisioning Request")
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys(Keys.TAB)
-            time.sleep(5)
-            page.wait_until_clickable((By.ID, "summary")).send_keys("app_dep_req_issue_test")
-            time.sleep(5)
-            page.wait_until_visible((By.ID, "create-issue-submit")).click()
+
+            page.wait_until_clickable((By.ID, "summary"), timeout = 10).send_keys("app_dep_req_issue_test")
+            page.wait_until_visible((By.ID, "create-issue-submit"), timeout = 10).click()
             
         sub_measure()
 
