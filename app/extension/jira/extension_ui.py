@@ -34,6 +34,7 @@ def app_specific_action(webdriver, datasets):
     
     @print_timing("selenium_app_specific_user_login")
     def measure():
+        
         def app_specific_user_login(username='admin', password='admin'):
             login_page = Login(webdriver)
             login_page.delete_all_cookies()
@@ -45,10 +46,7 @@ def app_specific_action(webdriver, datasets):
                 login_page.first_login_second_page_setup()
             login_page.wait_for_page_loaded()
         app_specific_user_login(username='admin', password='admin')
-    measure()
-    
-    @print_timing("selenium_app_custom_action")
-    def measure():
+
         @print_timing("selenium_app_custom_create_issue: general_deployment_request")
         def sub_measure():
             page.wait_until_clickable((By.ID, "create_link")).click()
