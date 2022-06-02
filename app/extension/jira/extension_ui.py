@@ -51,24 +51,34 @@ def app_specific_action(webdriver, datasets):
     def measure():
         @print_timing("selenium_app_custom_create_issue: general_deployment_request")
         def sub_measure():
+            print("started")
             page.wait_until_clickable((By.ID, "create_link")).click()
-            
+            print("create started")
             page.wait_until_clickable((By.ID , "project-field")).click()
+            print("project field selected")
             page.wait_until_visible((By.ID , "project-field")).send_keys("sel")
+            print("project written")
             page.wait_until_visible((By.ID , "project-field")).send_keys(Keys.TAB)
-
+            print("project selected")
             page.wait_until_clickable((By.ID , "issuetype-field")).click()
+            print("issue type selected")
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys("g")
+            print("issue type written")
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys(Keys.TAB)
+            print("issue type set")
 
             page.wait_until_clickable((By.ID, "summary")).send_keys("gen_req_issue_test")
+            print("summary written")
             page.wait_until_visible((By.ID, "create-issue-submit")).click()
+            print("created issue")
             
         sub_measure()
 
         @print_timing("selenium_app_custom_action:execute_issue:general_deployment_request")
         def sub_measure():
             global issue_key
+            print("issue key : ")
+            print(issue_key)
             issue_key = page.wait_until_visible((By.CLASS_NAME, "issue-created-key")).get_attribute("data-issue-key")
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
             page.wait_until_visible((By.ID, "summary-val"))  # Wait for summary field visible
