@@ -49,51 +49,52 @@ def app_specific_action(webdriver, datasets):
 
         @print_timing("selenium_app_custom_create_issue: general_deployment_request")
         def sub_measure():
-
-            page.wait_until_clickable((By.ID, "create_link"), timeout = 10).click()
+            time.sleep(2)
+            page.wait_until_clickable((By.ID, "create_link")).click()
             
-
-            page.wait_until_clickable((By.ID , "project-field"), timeout = 10).click()
+            time.sleep(2)
+            page.wait_until_clickable((By.ID , "project-field")).click()
             page.get_element((By.ID , "project-field")).send_keys(Keys.BACKSPACE)
             page.get_element((By.ID , "project-field")).send_keys("Selenium_Test_project")
             page.wait_until_visible((By.ID , "project-field")).send_keys(Keys.TAB)
             
-
-            page.wait_until_clickable((By.ID , "issuetype-field"), timeout = 10).click()
+            time.sleep(2)
+            page.wait_until_clickable((By.ID , "issuetype-field")).click()
             page.get_element((By.ID , "issuetype-field")).send_keys(Keys.BACKSPACE)
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys("General Deployment Request")
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys(Keys.TAB)
             
-
-            page.wait_until_clickable((By.ID, "summary"), timeout = 10).send_keys("gen_req_issue_test")
-
-            page.wait_until_visible((By.ID, "create-issue-submit"), timeout = 10).click()
+            time.sleep(2)
+            page.wait_until_clickable((By.ID, "summary")).send_keys("gen_req_issue_test")
+            # time.sleep(2)
+            page.wait_until_visible((By.ID, "create-issue-submit")).click()
             
         sub_measure()
 
-        # @print_timing("selenium_app_custom_action:execute_issue:general_deployment_request")
-        # def sub_measure():
-            # global issue_key
-            # issue_key = page.wait_until_visible((By.CLASS_NAME, "issue-created-key")).get_attribute("data-issue-key")
-            # page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
-            # page.wait_until_visible((By.ID, "summary-val"))  # Wait for summary field visible
-            # page.wait_until_visible((By.ID, "validation-web-item-link"))  # Wait for you app-specific UI element by ID selector
-            # page.wait_until_visible((By.ID, "validation-web-item-link")).click()
+        @print_timing("selenium_app_custom_action:execute_issue:general_deployment_request")
+        def sub_measure():
+             global issue_key
+             issue_key = page.wait_until_visible((By.CLASS_NAME, "issue-created-key")).get_attribute("data-issue-key")
+             page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
+             page.wait_until_visible((By.ID, "summary-val"))   
+             page.wait_until_visible((By.ID, "validation-web-item-link"))  
+             page.wait_until_visible((By.ID, "validation-web-item-link")).click()
             
-            # page.wait_until_visible((By.ID, "rmWorkflow"))
-            # page.select(page.get_element((By.ID, "rmWorkflow"))).select_by_visible_text(gen_req_workflow)
-            
-            # page.wait_until_clickable((By.ID, "rmNow")).click()
-            # page.wait_until_visible((By.ID, "rmPrompt")).click()
-            # page.wait_until_visible((By.ID, gen_req_dyn_property_key)).click()
-            # page.wait_until_visible((By.ID, gen_req_dyn_property_key)).send_keys((Keys.CONTROL, 'a'), gen_req_dyn_property_val);
-            # page.wait_until_visible((By.ID, "rmSave")).click()
-            # page.wait_until_visible((By.ID, "action_id_21")).click()
-            # page.wait_until_visible((By.ID, "issue-workflow-transition-submit")).click()
-            # #verify the button Failed2StartExecution visible after execution starts
-            # page.wait_until_visible((By.ID, "action_id_31"))
+             page.wait_until_visible((By.ID, "rmWorkflow"))
+             page.select(page.get_element((By.ID, "rmWorkflow"))).select_by_visible_text(gen_req_workflow)
+             
+             time.sleep(2)
+             page.wait_until_clickable((By.ID, "rmNow")).click()
+             page.wait_until_visible((By.ID, "rmPrompt")).click()
+             page.wait_until_visible((By.ID, gen_req_dyn_property_key)).click()
+             page.wait_until_visible((By.ID, gen_req_dyn_property_key)).send_keys((Keys.CONTROL, 'a'), gen_req_dyn_property_val);
+             page.wait_until_visible((By.ID, "rmSave")).click()
+             page.wait_until_visible((By.ID, "action_id_21")).click()
+             page.wait_until_visible((By.ID, "issue-workflow-transition-submit")).click()
+             verify the button Failed2StartExecution visible after execution starts
+             page.wait_until_visible((By.ID, "action_id_31"))
 
-        # sub_measure()
+        sub_measure()
 
         # @print_timing("selenium_app_custom_action:view_issue:general_deployment_request")
         # def sub_measure():
@@ -113,21 +114,22 @@ def app_specific_action(webdriver, datasets):
 
         @print_timing("selenium_app_custom_create_issue:application_deployment/provisioning_request")
         def sub_measure():
-
-            page.wait_until_clickable((By.ID, "create_link"), timeout = 10).click()
-
-            page.wait_until_clickable((By.ID , "project-field"), timeout = 10).click()
+            time.sleep(5)
+            page.wait_until_clickable((By.ID, "create_link")).click()
+            time.sleep(5)
+            page.wait_until_clickable((By.ID , "project-field")).click()
             page.get_element((By.ID , "project-field")).send_keys(Keys.BACKSPACE)
             page.wait_until_visible((By.ID , "project-field")).send_keys("Selenium_Test_project")
             page.wait_until_visible((By.ID , "project-field")).send_keys(Keys.TAB)
-
-            page.wait_until_clickable((By.ID , "issuetype-field"), timeout = 10).click()
+            time.sleep(5)
+            page.wait_until_clickable((By.ID , "issuetype-field")).click()
             page.get_element((By.ID , "issuetype-field")).send_keys(Keys.BACKSPACE)
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys("Application Deployment/Provisioning Request")
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys(Keys.TAB)
-
-            page.wait_until_clickable((By.ID, "summary"), timeout = 10).send_keys("app_dep_req_issue_test")
-            page.wait_until_visible((By.ID, "create-issue-submit"), timeout = 10).click()
+            time.sleep(5)
+            page.wait_until_clickable((By.ID, "summary")).send_keys("app_dep_req_issue_test")
+            # time.sleep(5)
+            page.wait_until_visible((By.ID, "create-issue-submit")).click()
             
         sub_measure()
 
@@ -185,4 +187,3 @@ def app_specific_action(webdriver, datasets):
                 # assert "CLOSED" == ele
         # sub_measure()
     measure()
-
