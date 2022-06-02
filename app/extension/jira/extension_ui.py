@@ -1,5 +1,4 @@
 import time
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium_ui.base_page import BasePage
@@ -75,7 +74,10 @@ def app_specific_action(webdriver, datasets):
             page.wait_until_visible((By.ID, "summary-val"))  # Wait for summary field visible
             page.wait_until_visible((By.ID, "validation-web-item-link"))  # Wait for you app-specific UI element by ID selector
             page.wait_until_visible((By.ID, "validation-web-item-link")).click()
+            
+            page.wait_until_visible((By.ID, "rmWorkflow"))
             page.select(page.get_element((By.ID, "rmWorkflow"))).select_by_visible_text(gen_req_workflow)
+            
             page.wait_until_clickable((By.ID, "rmNow")).click()
             page.wait_until_visible((By.ID, "rmPrompt")).click()
             page.wait_until_visible((By.ID, gen_req_dyn_property_key)).click()
@@ -83,7 +85,6 @@ def app_specific_action(webdriver, datasets):
             page.wait_until_visible((By.ID, "rmSave")).click()
             page.wait_until_visible((By.ID, "action_id_21")).click()
             page.wait_until_visible((By.ID, "issue-workflow-transition-submit")).click()
-            print("here")
             #verify the button Failed2StartExecution visible after execution starts
             page.wait_until_visible((By.ID, "action_id_31"))
 
@@ -129,11 +130,19 @@ def app_specific_action(webdriver, datasets):
             page.wait_until_visible((By.ID, "summary-val"))
             page.wait_until_visible((By.ID, "validation-web-item-link"))  
             page.wait_until_visible((By.ID, "validation-web-item-link")).click()
+            
+            page.wait_until_visible((By.ID, "rmApplication"))
             page.select(page.get_element((By.ID, "rmApplication"))).select_by_visible_text(app_req_application)
             
+            page.wait_until_visible((By.ID, "rmWorkflow"))
             page.select(page.get_element((By.ID, "rmWorkflow"))).select_by_visible_text(app_req_workflow)
+            
+            page.wait_until_visible((By.ID, "rmPackage"))
             page.select(page.get_element((By.ID, "rmPackage"))).select_by_visible_text(app_req_package)
+            
+            page.wait_until_visible((By.ID, "rmProfile"))
             page.select(page.get_element((By.ID, "rmProfile"))).select_by_visible_text(app_req_profile)
+            
             page.wait_until_clickable((By.ID, "rmNow")).click()
             page.wait_until_visible((By.ID, "rmPrompt")).click()
             page.wait_until_visible((By.ID, app_req_dyn_property_key1)).click()
