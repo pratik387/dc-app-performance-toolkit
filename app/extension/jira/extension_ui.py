@@ -53,15 +53,15 @@ def app_specific_action(webdriver, datasets):
         def sub_measure():
             page.wait_until_clickable((By.ID, "create_link")).click()
             
-
+        
             page.wait_until_clickable((By.ID , "project-field")).click()
             page.get_element((By.ID , "project-field")).send_keys(Keys.BACKSPACE)
-            page.get_element((By.ID , "project-field")).send_keys("sel")
+            page.get_element((By.ID , "project-field")).send_keys("Selenium_Test_project")
             page.wait_until_visible((By.ID , "project-field")).send_keys(Keys.TAB)
             
             page.wait_until_clickable((By.ID , "issuetype-field")).click()
             page.get_element((By.ID , "issuetype-field")).send_keys(Keys.BACKSPACE)
-            page.wait_until_visible((By.ID , "issuetype-field")).send_keys("g")
+            page.wait_until_visible((By.ID , "issuetype-field")).send_keys("General Deployment Request")
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys(Keys.TAB)
 
             page.wait_until_clickable((By.ID, "summary")).send_keys("gen_req_issue_test")
@@ -69,45 +69,45 @@ def app_specific_action(webdriver, datasets):
             
         sub_measure()
 
-        @print_timing("selenium_app_custom_action:execute_issue:general_deployment_request")
-        def sub_measure():
-            global issue_key
-            issue_key = page.wait_until_visible((By.CLASS_NAME, "issue-created-key")).get_attribute("data-issue-key")
-            page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
-            page.wait_until_visible((By.ID, "summary-val"))  # Wait for summary field visible
-            page.wait_until_visible((By.ID, "validation-web-item-link"))  # Wait for you app-specific UI element by ID selector
-            page.wait_until_visible((By.ID, "validation-web-item-link")).click()
+        # @print_timing("selenium_app_custom_action:execute_issue:general_deployment_request")
+        # def sub_measure():
+            # global issue_key
+            # issue_key = page.wait_until_visible((By.CLASS_NAME, "issue-created-key")).get_attribute("data-issue-key")
+            # page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
+            # page.wait_until_visible((By.ID, "summary-val"))  # Wait for summary field visible
+            # page.wait_until_visible((By.ID, "validation-web-item-link"))  # Wait for you app-specific UI element by ID selector
+            # page.wait_until_visible((By.ID, "validation-web-item-link")).click()
             
-            page.wait_until_visible((By.ID, "rmWorkflow"))
-            page.select(page.get_element((By.ID, "rmWorkflow"))).select_by_visible_text(gen_req_workflow)
+            # page.wait_until_visible((By.ID, "rmWorkflow"))
+            # page.select(page.get_element((By.ID, "rmWorkflow"))).select_by_visible_text(gen_req_workflow)
             
-            page.wait_until_clickable((By.ID, "rmNow")).click()
-            page.wait_until_visible((By.ID, "rmPrompt")).click()
-            page.wait_until_visible((By.ID, gen_req_dyn_property_key)).click()
-            page.wait_until_visible((By.ID, gen_req_dyn_property_key)).send_keys((Keys.CONTROL, 'a'), gen_req_dyn_property_val);
-            page.wait_until_visible((By.ID, "rmSave")).click()
-            page.wait_until_visible((By.ID, "action_id_21")).click()
-            page.wait_until_visible((By.ID, "issue-workflow-transition-submit")).click()
-            #verify the button Failed2StartExecution visible after execution starts
-            page.wait_until_visible((By.ID, "action_id_31"))
+            # page.wait_until_clickable((By.ID, "rmNow")).click()
+            # page.wait_until_visible((By.ID, "rmPrompt")).click()
+            # page.wait_until_visible((By.ID, gen_req_dyn_property_key)).click()
+            # page.wait_until_visible((By.ID, gen_req_dyn_property_key)).send_keys((Keys.CONTROL, 'a'), gen_req_dyn_property_val);
+            # page.wait_until_visible((By.ID, "rmSave")).click()
+            # page.wait_until_visible((By.ID, "action_id_21")).click()
+            # page.wait_until_visible((By.ID, "issue-workflow-transition-submit")).click()
+            # #verify the button Failed2StartExecution visible after execution starts
+            # page.wait_until_visible((By.ID, "action_id_31"))
 
-        sub_measure()
+        # sub_measure()
 
-        @print_timing("selenium_app_custom_action:view_issue:general_deployment_request")
-        def sub_measure():
-            global issue_key
-            page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
-            page.wait_until_visible((By.ID, "summary-val"))  # Wait for summary field visible
-            time.sleep(1)
-            ele = page.wait_until_visible((By.XPATH, "//span[@id='status-val']/span")).text
+        # @print_timing("selenium_app_custom_action:view_issue:general_deployment_request")
+        # def sub_measure():
+            # global issue_key
+            # page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
+            # page.wait_until_visible((By.ID, "summary-val"))  # Wait for summary field visible
+            # time.sleep(1)
+            # ele = page.wait_until_visible((By.XPATH, "//span[@id='status-val']/span")).text
 
-            if "CLOSED" == ele:
-                print("Execution complete")
-            elif "EXECUTING IN CDA" == ele:
-                print("executing in CDA")
-            else:
-                assert "CLOSED" == ele
-        sub_measure()
+            # if "CLOSED" == ele:
+                # print("Execution complete")
+            # elif "EXECUTING IN CDA" == ele:
+                # print("executing in CDA")
+            # else:
+                # assert "CLOSED" == ele
+        # sub_measure()
 
         @print_timing("selenium_app_custom_create_issue:application_deployment/provisioning_request")
         def sub_measure():
@@ -115,70 +115,70 @@ def app_specific_action(webdriver, datasets):
 
             page.wait_until_clickable((By.ID , "project-field")).click()
             page.get_element((By.ID , "project-field")).send_keys(Keys.BACKSPACE)
-            page.wait_until_visible((By.ID , "project-field")).send_keys("sel")
+            page.wait_until_visible((By.ID , "project-field")).send_keys("Selenium_Test_project")
             page.wait_until_visible((By.ID , "project-field")).send_keys(Keys.TAB)
 
             page.wait_until_clickable((By.ID , "issuetype-field")).click()
             page.get_element((By.ID , "issuetype-field")).send_keys(Keys.BACKSPACE)
-            page.wait_until_visible((By.ID , "issuetype-field")).send_keys("a")
+            page.wait_until_visible((By.ID , "issuetype-field")).send_keys("Application Deployment/Provisioning Request")
             page.wait_until_visible((By.ID , "issuetype-field")).send_keys(Keys.TAB)
             page.wait_until_clickable((By.ID, "summary")).send_keys("app_dep_req_issue_test")
             page.wait_until_visible((By.ID, "create-issue-submit")).click()
             
         sub_measure()
 
-        @print_timing("selenium_app_custom_action:execute_issue:application_deployment/provisioning_request")
-        def sub_measure():
-            global issue_key
-            issue_key = page.wait_until_visible((By.CLASS_NAME, "issue-created-key")).get_attribute("data-issue-key")
-            page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
-            page.wait_until_visible((By.ID, "summary-val"))
-            page.wait_until_visible((By.ID, "validation-web-item-link"))  
-            page.wait_until_visible((By.ID, "validation-web-item-link")).click()
+        # @print_timing("selenium_app_custom_action:execute_issue:application_deployment/provisioning_request")
+        # def sub_measure():
+            # global issue_key
+            # issue_key = page.wait_until_visible((By.CLASS_NAME, "issue-created-key")).get_attribute("data-issue-key")
+            # page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
+            # page.wait_until_visible((By.ID, "summary-val"))
+            # page.wait_until_visible((By.ID, "validation-web-item-link"))  
+            # page.wait_until_visible((By.ID, "validation-web-item-link")).click()
             
-            page.wait_until_visible((By.ID, "rmApplication"))
-            page.select(page.get_element((By.ID, "rmApplication"))).select_by_visible_text(app_req_application)
+            # page.wait_until_visible((By.ID, "rmApplication"))
+            # page.select(page.get_element((By.ID, "rmApplication"))).select_by_visible_text(app_req_application)
             
-            page.wait_until_visible((By.ID, "rmWorkflow"))
-            page.select(page.get_element((By.ID, "rmWorkflow"))).select_by_visible_text(app_req_workflow)
+            # page.wait_until_visible((By.ID, "rmWorkflow"))
+            # page.select(page.get_element((By.ID, "rmWorkflow"))).select_by_visible_text(app_req_workflow)
             
-            page.wait_until_visible((By.ID, "rmPackage"))
-            page.select(page.get_element((By.ID, "rmPackage"))).select_by_visible_text(app_req_package)
+            # page.wait_until_visible((By.ID, "rmPackage"))
+            # page.select(page.get_element((By.ID, "rmPackage"))).select_by_visible_text(app_req_package)
             
-            page.wait_until_visible((By.ID, "rmProfile"))
-            page.select(page.get_element((By.ID, "rmProfile"))).select_by_visible_text(app_req_profile)
+            # page.wait_until_visible((By.ID, "rmProfile"))
+            # page.select(page.get_element((By.ID, "rmProfile"))).select_by_visible_text(app_req_profile)
             
-            page.wait_until_clickable((By.ID, "rmNow")).click()
-            page.wait_until_visible((By.ID, "rmPrompt")).click()
-            page.wait_until_visible((By.ID, app_req_dyn_property_key1)).click()
-            page.wait_until_visible((By.ID,app_req_dyn_property_key1)).send_keys((Keys.CONTROL, 'a'), app_req_dyn_property_val1)
-            page.wait_until_visible((By.ID, app_req_dyn_property_key2)).click()
-            page.wait_until_visible((By.ID, app_req_dyn_property_key2)).send_keys((Keys.CONTROL, 'a'), app_req_dyn_property_val2)
-            page.wait_until_visible((By.ID, app_req_dyn_property_key3)).click()
-            page.wait_until_visible((By.ID, app_req_dyn_property_key3)).send_keys((Keys.CONTROL, 'a'), app_req_dyn_property_val3)
-            page.wait_until_visible((By.ID, "rmSave")).click()
-            page.wait_until_visible((By.ID, "action_id_21")).click()
-            page.wait_until_visible((By.ID, "issue-workflow-transition-submit")).click()
+            # page.wait_until_clickable((By.ID, "rmNow")).click()
+            # page.wait_until_visible((By.ID, "rmPrompt")).click()
+            # page.wait_until_visible((By.ID, app_req_dyn_property_key1)).click()
+            # page.wait_until_visible((By.ID,app_req_dyn_property_key1)).send_keys((Keys.CONTROL, 'a'), app_req_dyn_property_val1)
+            # page.wait_until_visible((By.ID, app_req_dyn_property_key2)).click()
+            # page.wait_until_visible((By.ID, app_req_dyn_property_key2)).send_keys((Keys.CONTROL, 'a'), app_req_dyn_property_val2)
+            # page.wait_until_visible((By.ID, app_req_dyn_property_key3)).click()
+            # page.wait_until_visible((By.ID, app_req_dyn_property_key3)).send_keys((Keys.CONTROL, 'a'), app_req_dyn_property_val3)
+            # page.wait_until_visible((By.ID, "rmSave")).click()
+            # page.wait_until_visible((By.ID, "action_id_21")).click()
+            # page.wait_until_visible((By.ID, "issue-workflow-transition-submit")).click()
             
-            #verify the button Failed2StartExecution visible after execution starts
-            page.wait_until_visible((By.ID, "action_id_31"))
+            # #verify the button Failed2StartExecution visible after execution starts
+            # page.wait_until_visible((By.ID, "action_id_31"))
             
 
-        sub_measure()
+        # sub_measure()
 
-        @print_timing("selenium_app_custom_action:view_issue:application_deployment/provisioning_request")
-        def sub_measure():
-            global issue_key
-            page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
-            page.wait_until_visible((By.ID, "summary-val"))
-            time.sleep(1)
-            ele = page.wait_until_visible((By.XPATH, "//span[@id='status-val']/span")).text
-            if "CLOSED" == ele:
-                print("Execution complete")
-            elif "EXECUTING IN CDA" == ele:
-                print("executing in CDA")
-            else:
-                assert "CLOSED" == ele
-        sub_measure()
+        # @print_timing("selenium_app_custom_action:view_issue:application_deployment/provisioning_request")
+        # def sub_measure():
+            # global issue_key
+            # page.go_to_url(f"{JIRA_SETTINGS.server_url}/browse/{issue_key}")
+            # page.wait_until_visible((By.ID, "summary-val"))
+            # time.sleep(1)
+            # ele = page.wait_until_visible((By.XPATH, "//span[@id='status-val']/span")).text
+            # if "CLOSED" == ele:
+                # print("Execution complete")
+            # elif "EXECUTING IN CDA" == ele:
+                # print("executing in CDA")
+            # else:
+                # assert "CLOSED" == ele
+        # sub_measure()
     measure()
 
